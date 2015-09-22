@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox
 
 myGui = Tk()
 
@@ -14,6 +15,14 @@ def dele():
 def newfi():
     myLabel1 = Label(text = 'clicked on new file', fg = 'red', bg = 'yellow', font = ('roman', 24, 'italic'))
     myLabel1.pack()
+
+def mbox():
+    messagebox.showinfo(title='Save', message = 'are you sure to save?')
+
+def mquit():
+    mess = messagebox.askyesno(title = 'Quit', message = 'Are you sure to quit?')
+    if mess == 1:
+        myGui.destroy()
 
 
 a = StringVar()
@@ -31,7 +40,8 @@ listtwo = Menu()
 
 listone.add_command(label = 'New File', command = newfi)
 listone.add_command(label = 'Open File')
-listone.add_command(label = 'Save File')
+listone.add_command(label = 'Save File', command = mbox)
+listone.add_command(label = 'Quit', command = mquit)
 
 listtwo.add_command(label = 'undo')
 listtwo.add_command(label = 'redo')
